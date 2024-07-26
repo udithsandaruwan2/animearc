@@ -4,21 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Episodes</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff; /* Light text color for contrast */
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        table {
+            background-color: #121212; /* Even darker background for the table */
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #343a40; /* Darker gray for headers */
+        }
+
+        .form-control, .btn {
+            margin-top: 10px;
+        }
+        
+        #btnwatch {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid whitesmoke;
+            border-radius: 25px;
+            padding: 5px 10px;
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        #btnwatch:hover {
+            background-color: whitesmoke;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-    <h1>btth</h1>
-    <hr>
-    {% for episode in episodes %}
-        <p>Link: <a href="{{ episode.link }}">{{ episode.link }}</a>, <br>
-            <form method="POST">
+    <div class="container">
+        <h1 class="text-center">BATTLE THROUGH THE HEAVEN</h1>
+        <hr class="my-4">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Original Link</th>
+                    <th>EZy watch</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for episode in episodes %}
+                    <tr>
+                        <td>{{ episode.title }}</td>
+                        <td><a href="{{ episode.link }}" class="text-light">{{ episode.link }}</a></td>
+                        <td>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="url" value="{{ episode.link }}">
+                                <input type="hidden" name="title" value="{{ episode.title }}">
+                                <button id="btnwatch" type="submit" class="btn btn-primary">Watch</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-                {% csrf_token %}
-                <input type="hidden" name="url" value="{{ episode.link }}">
-                <input type="hidden" name="title" value="{{ episode.title }}">
-                Title: {{ episode.title }}</p>
-                <button>watch</button>
-            </form>
-           
-    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
