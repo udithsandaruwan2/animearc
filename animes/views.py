@@ -10,7 +10,7 @@ def animes(request):
 
 
 def btth(request: HttpRequest):
-    episodes = getAnimeList('https://luciferdonghua.in/anime/battle-through-the-heavens-season-5/')
+    episodes = getAnimeList('https://misterdonghua.com/anime/battle-through-the-heavens-season-5/')
     
     if request.method == 'POST':
         title = request.POST.get('title')
