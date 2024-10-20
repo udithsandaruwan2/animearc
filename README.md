@@ -3,7 +3,7 @@
 <p align="center">This project is created to watch anime series scrapped from https://luciferdonghua.in to watch freely without any ads and to enhance my coding skills. This project was done by me to learn and level up my knowledge.</p>
 
 <p align="center">
-  <img src="screenshot.png" alt="App Screenshot">
+  <img src="Screenshot 2024-10-20 203024.png" alt="App Screenshot">
 </p>
 </br>
 <h1 align="center">Contributing</h1>
