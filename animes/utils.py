@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests
+from cryptography.fernet import Fernet
 
 def getAnimeList(url):
     page = requests.get(url)
@@ -38,3 +39,20 @@ def getEpi(url):
     # Extract the content attribute of the meta tag, which contains the video URL
     video_url = embed_url_meta['content'] if embed_url_meta else None
     return video_url
+
+# def download_video(video_url, file_name):
+#     if video_url:
+#         print(f"Downloading video from {video_url}")
+#         response = requests.get(video_url, stream=True)
+        
+#         # Check if the response is valid
+#         if response.status_code == 200:
+#             with open(file_name, 'wb') as video_file:
+#                 for chunk in response.iter_content(chunk_size=1024):
+#                     if chunk:
+#                         video_file.write(chunk)
+#             print(f"Video downloaded successfully: {file_name}")
+#         else:
+#             print(f"Failed to download video. Status code: {response.status_code}")
+#     else:
+#         print("Video URL not found.")
