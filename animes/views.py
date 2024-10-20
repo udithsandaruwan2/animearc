@@ -15,9 +15,13 @@ def btth(request: HttpRequest):
     if request.method == 'POST':
         title = request.POST.get('title')
         url = request.POST.get('url')
+        watch = request.POST.get('watch')
         encoded_url = quote(url, safe='')
+        # if watch == 'watch':
+        #     return redirect(reverse('single-epi') + f'?title={title}&url={encoded_url}')
+        # else :
+        #     return redirect(reverse('download-epi') + f'?title={title}&url={encoded_url}')
         return redirect(reverse('single-epi') + f'?title={title}&url={encoded_url}')
-    
     context = {'episodes': episodes}
     return render(request, 'animes/btth.html', context)
 
@@ -30,5 +34,9 @@ def singleEpi(request):
     return render(request, 'animes/single-epi.html', context)
 
 # def downloadEpi(request):
-#     download_video = 
-#     pass
+#     title = request.GET.get('title')
+#     url = request.GET.get('url')
+#     episode = getEpi(url)
+#     download_video(title, episode)
+#     encoded_url = quote(url, safe='')
+#     return redirect(reverse('single-epi') + f'?title={title}&url={encoded_url}')

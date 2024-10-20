@@ -59,6 +59,7 @@
                     <th>Title</th>
                     <th>Original Link</th>
                     <th>EZy watch</th>
+                    <!-- <th>Download</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -71,9 +72,19 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="url" value="{{ episode.link }}">
                                 <input type="hidden" name="title" value="{{ episode.title }}">
+                                <input type="hidden" name="watch" value="watch">
                                 <button id="btnwatch" type="submit" class="btn btn-primary">Watch</button>
                             </form>
                         </td>
+                        <!-- <td>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="url" value="{{ episode.link }}">
+                                <input type="hidden" name="title" value="{{ episode.title }}">
+                                <input type="hidden" name="watch" value="down">
+                                <button id="btnwatch" type="submit" class="btn btn-primary">Get It</button>
+                            </form>
+                        </td> -->
                     </tr>
                 {% endfor %}
             </tbody>
